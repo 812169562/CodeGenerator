@@ -1,0 +1,18 @@
+﻿{
+    path: '/materials',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'materials',
+    meta: { title: 'materials', icon: 'component' },
+children: [
+    { path: 'accessrecord', component: _import('materials/accessrecord/list'), name: 'accessrecord', meta: { title: 'accessrecord', icon: 'accessrecord', noCache: true }},
+    { path: 'instock', component: _import('materials/instock/list'), name: 'instock', meta: { title: 'instock', icon: 'instock', noCache: true }},
+    { path: 'material', component: _import('materials/material/list'), name: 'material', meta: { title: 'material', icon: 'material', noCache: true }},
+    { path: 'materialinventory', component: _import('materials/materialinventory/list'), name: 'materialinventory', meta: { title: 'materialinventory', icon: 'materialinventory', noCache: true }},
+]
+},
+materials: 'materials',
+    accessrecord: ' 领用记录',
+    instock: '入库记录',
+    material: '物资',
+    materialinventory: '物资库存',

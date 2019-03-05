@@ -1,0 +1,71 @@
+﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
+<%@ Register Name="TreeDto" Template="Trees\TreeDto.cst" MergeProperties="False" ExcludeProperties="" %>
+
+<%@ Assembly Src="..\Common\Model.cs" %>
+<%@ Assembly Src="..\Common\Extensions.cs" %>
+
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%@ Import Namespace="SchemaMapper" %>
+
+<%@ Property Name="Entity" Type="SchemaMapper.Entity"  %>
+<%@ Property Name="Namespace" Type="System.String" %>
+<%-- Safe类名 --%>
+<% string SafeClassName = Entity.ClassName.ToSafeName(); %>
+<%-- 描述 --%>
+<% string Description = Entity.Description; %>
+<%-- 如果是树型实体，则调用子模板 --%>
+<%
+if( Entity.IsTreeEntity() ){
+    CodeTemplate template =new TreeDto();
+    template.SetProperty("Namespace",Namespace);
+    template.SetProperty("Entity",Entity);
+    template.Render(this.Response);
+    return;
+}
+%>
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+
+namespace <%= Entity.GetNamespace(Namespace,"Service.Dtos") %> {
+    /// <summary>
+    /// <%= Description %>数据传输对象
+    /// </summary>
+    [DataContract]
+    public class <%= SafeClassName %>Dto : BaseDto {
+        <% foreach(Property p in Entity.Properties) { %>
+        <% if(p.PropertyName=="TenantId") continue; %>
+        <% if(p.PropertyName=="Version") continue; %>
+        <% if(p.PropertyName=="IsDeleted") continue; %>
+        <% if(p.PropertyName=="IsEnable") continue; %>
+        <% if(p.PropertyName=="CreateTime") continue; %>
+        <% if(p.PropertyName=="CreateId") continue; %>
+        <% if(p.PropertyName=="CreateName") continue; %>
+        <% if(p.PropertyName=="LastUpdateTime") continue; %>
+        <% if(p.PropertyName=="LastUpdateId") continue; %>
+        <% if(p.PropertyName=="LastUpdateName") continue; %>
+        <% if(p.PropertyName=="IsEnable") continue; %>
+        <% if(p.PropertyName=="Status") continue; %>
+        <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+        /// <summary>
+        /// <%= p.Description %>
+        /// </summary>
+        <% if( p.HasValidate() ) {%>
+        <%= p.Validate() %>
+        <%}%>
+        [Display( Name = "<%= p.Description %>" )]
+        [DataMember]
+        public <%= p.TypeName %> <%= p.PropertyName.ToSafeName() %> { get; set; }
+        
+        <% }%>
+       <%-- /// <summary>
+        /// 输出<%= Description %>状态
+        /// </summary>
+        public override string ToString() {
+            return this.ToEntity().ToString();
+        }--%>
+    }
+}

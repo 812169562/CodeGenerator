@@ -1,0 +1,134 @@
+﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
+
+<%@ Assembly Src="..\Common\Model.cs" %>
+<%@ Assembly Src="..\Common\Extensions.cs" %>
+
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%@ Import Namespace="SchemaMapper" %>
+
+<%@ Property Name="Namespace" Type="System.String" %>
+<%@ Property Name="Entity" Type="SchemaMapper.Entity"  %>
+<%@ Property Name="Schema" Type="System.String"  %>
+<%-- Safe类名 --%>
+<% string SafeClassName = Entity.ClassName.ToPascalCase(); %>
+<% string safeClassName = Entity.ClassName.ToCamelCase(); %>
+<% string TableSchema = Entity.TableSchema.ToPascalCase(); %>
+
+<%-- 描述 --%>
+<% string Description = Entity.Description; %>
+using <%= Entity.GetNamespace(Namespace,"Domain.Queries") %>;
+using <%= Entity.GetNamespace(Namespace,"Service.Dtos") %>;
+using <%= Entity.GetNamespace(Namespace,"Service.Contract") %>;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Sand.Result;
+using Microsoft.AspNetCore.Cors;
+
+namespace Sand.Api.Controllers.<%=TableSchema%> {
+    /// <summary>
+    /// <%=TableSchema%>-<%= Description %>服务
+    /// </summary>
+    [Route(ApiVersion)]
+    [EnableCors("any")]
+    public class <%= SafeClassName %>Controller : BaseApiController {
+         /// <summary>
+        /// <%= Description %>服务
+        /// </summary>
+        private readonly I<%= SafeClassName %>Service _<%= safeClassName %>Service;
+        
+        /// <summary>
+        /// 初始化<%= Description %>控制器
+        /// </summary>
+        /// <param name="service"><%= Description %>服务</param>
+        public <%= SafeClassName %>Controller( I<%= SafeClassName %>Service service ){
+            _<%= safeClassName %>Service = service;
+        }
+        
+        /// <summary>
+        /// 查询<%= Description %>信息
+        /// </summary>
+        /// <param name="<%= safeClassName %>Query"><%= Description %>查询对象</param>
+        /// <returns>查询的成功信息（1:成功,2:失败）</returns>
+        [HttpGet]
+        public async Task<IActionResult> Get(<%= SafeClassName %>Query <%= safeClassName %>Query)
+        {
+            return Success(await  _<%= safeClassName %>Service.RetrieveAsync(<%= safeClassName %>Query));
+        }
+        
+        /// <summary>
+        /// 根据编号查询<%= Description %>信息
+        /// </summary>
+        /// <param name="id">编号</param>
+        /// <returns>查询的成功信息（1:成功,2:失败）</returns>
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(<%=Entity.GetEntityIdType()%> id)
+        {
+            return Success(await _<%= safeClassName %>Service.RetrieveByIdAsync(id));
+        }
+        
+        /// <summary>
+        /// 请求<%= Description %>分页信息
+        /// </summary>
+        /// <param name="<%= safeClassName %>Query"><%= Description %>查询对象</param>
+        /// <returns>查询的成功信息（1:成功,2:失败）</returns>
+        [HttpGet("page", Name = "page<%= safeClassName %>")]
+        public async Task<IActionResult> Page(<%= SafeClassName %>Query <%= safeClassName %>Query)
+        {
+            return Success(await _<%= safeClassName %>Service.PageAsync(<%= safeClassName %>Query));
+        }
+        
+        /// <summary>
+        /// 更新<%= Description %>信息
+        /// </summary>
+        /// <param name="<%= safeClassName %>"><%= Description %>更新对象</param>
+        /// <returns>更新结果信息（1:成功,2:失败）</returns>
+        [HttpPost]
+        public async  Task<IActionResult> Post([FromBody]<%= SafeClassName %>Dto <%= safeClassName %>)
+        {
+           await _<%= safeClassName %>Service.UpdateAsync(<%= safeClassName %>);
+            return Success();
+        }
+        
+         /// <summary>
+        /// 新增<%= Description %>信息
+        /// </summary>
+        /// <param name="<%= safeClassName %>"><%= Description %>信息</param>
+        /// <returns>新增结果信息（1:成功,2:失败）</returns>
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]<%= SafeClassName %>Dto <%= safeClassName %>)
+        {
+            return Success(await _<%= safeClassName %>Service.CreateAsync(<%= safeClassName %>));
+        }
+        
+        /// <summary>
+        /// 删除<%= Description %>信息
+        /// </summary>
+        /// <param name="<%= safeClassName %>"><%= Description %>信息</param>
+        /// <returns>删除结果信息（1:成功,2:失败）</returns>
+        [HttpDelete]
+        public async Task<IActionResult> Delete(List<<%= SafeClassName %>Dto> <%= safeClassName %>)
+        {
+            await _<%= safeClassName %>Service.DeleteAsync(<%= safeClassName %>);
+            return Success();
+        }
+        
+        /// <summary>
+        /// 停用<%= Description %>信息
+        /// </summary>
+        /// <param name="<%= safeClassName %>"><%= Description %>信息</param>
+        /// <param name="isEnable">启用或者停用</param>
+        /// <returns>停用或者启用结果信息（1:成功,2:失败）</returns>
+        [HttpPost("stop", Name = "stop<%= safeClassName %>")]
+        public async Task<IActionResult> Stop(List<<%= SafeClassName %>Dto> <%= safeClassName %>, bool isEnable=false)
+        {
+            await _<%= safeClassName %>Service.StopOrEnableAsync(<%= safeClassName %>, isEnable);
+            return Success();
+        }
+    }
+}

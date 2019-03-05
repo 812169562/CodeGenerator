@@ -1,0 +1,944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B58D16AD-9987-4BB8-8BB2-2A0CE8BC9829}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeGenerator</RootNamespace>
+    <AssemblyName>CodeGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CodeSmith.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=9fd61cdb91609a7a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\CodeSmith.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeSmith.Engine, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fd61cdb91609a7a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\CodeSmith.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.6, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory.CSharp, Version=5.0.0.6, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ICSharpCode.NRefactory.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.3.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Administrator\.nuget\packages\mysql.data\6.9.12\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SchemaExplorer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fd61cdb91609a7a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\SchemaExplorer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="02-Result\Controllers\Activities\ActivityController.cs" />
+    <Compile Include="02-Result\Controllers\Activities\CouponaddlogController.cs" />
+    <Compile Include="02-Result\Controllers\Activities\CouponcollarController.cs" />
+    <Compile Include="02-Result\Controllers\Activities\CouponController.cs" />
+    <Compile Include="02-Result\Controllers\Activities\CouponlogController.cs" />
+    <Compile Include="02-Result\Controllers\Consults\AnswerController.cs" />
+    <Compile Include="02-Result\Controllers\Consults\ConsultController.cs" />
+    <Compile Include="02-Result\Controllers\Consults\OptionsController.cs" />
+    <Compile Include="02-Result\Controllers\Consults\QuestionnaireController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\ApplicationsController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\DepartmentController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\ResourceController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\StoreController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\TenantController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\TenantuserrelationController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\UserdepartmentController.cs" />
+    <Compile Include="02-Result\Controllers\Essentialinformations\UsersController.cs" />
+    <Compile Include="02-Result\Controllers\Materials\AccessrecordController.cs" />
+    <Compile Include="02-Result\Controllers\Materials\InstockController.cs" />
+    <Compile Include="02-Result\Controllers\Materials\MaterialController.cs" />
+    <Compile Include="02-Result\Controllers\Materials\MaterialinventoryController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DrugallotController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DrugallotinfoController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DrugbatchController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DruginoutController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DruginoutinfController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DruginoutinfoController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DrugsController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DrugstockController.cs" />
+    <Compile Include="02-Result\Controllers\Medicinestores\DrugupdatelogController.cs" />
+    <Compile Include="02-Result\Controllers\Orders\PaymentinformationController.cs" />
+    <Compile Include="02-Result\Controllers\Orders\PaymentinformationdetailController.cs" />
+    <Compile Include="02-Result\Controllers\Orders\PrescriptionorderController.cs" />
+    <Compile Include="02-Result\Controllers\Orders\PrescriptionorderinfoController.cs" />
+    <Compile Include="02-Result\Controllers\Patientvisits\AppointmentregisterController.cs" />
+    <Compile Include="02-Result\Controllers\Patientvisits\DiagnosisController.cs" />
+    <Compile Include="02-Result\Controllers\Patientvisits\DiseaseController.cs" />
+    <Compile Include="02-Result\Controllers\Patientvisits\RegistersController.cs" />
+    <Compile Include="02-Result\Controllers\Patientvisits\VisitController.cs" />
+    <Compile Include="02-Result\Controllers\Patientvisits\VisitlogController.cs" />
+    <Compile Include="02-Result\Controllers\Sittingtemplates\SittingController.cs" />
+    <Compile Include="02-Result\Controllers\Sittingtemplates\SittingtemplateController.cs" />
+    <Compile Include="02-Result\Controllers\Storages\StoragesController.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\IActivityDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\IActivityDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponaddlogDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponaddlogDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponcollarDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponcollarDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponlogDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Activities\ICouponlogDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IAnswerDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IAnswerDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IConsultDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IConsultDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IOptionsDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IOptionsDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IQuestionnaireDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Consults\IQuestionnaireDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IApplicationsDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IApplicationsDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IDepartmentDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IDepartmentDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IResourceDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IResourceDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IStoreDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IStoreDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\ITenantDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\ITenantDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\ITenantuserrelationDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\ITenantuserrelationDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IUserdepartmentDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IUserdepartmentDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IUsersDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Essentialinformations\IUsersDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IAccessrecordDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IAccessrecordDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IInstockDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IInstockDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IMaterialDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IMaterialDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IMaterialinventoryDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Materials\IMaterialinventoryDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugallotDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugallotDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugallotinfoDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugallotinfoDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugbatchDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugbatchDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDruginoutDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDruginoutDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDruginoutinfDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDruginoutinfDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDruginoutinfoDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDruginoutinfoDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugsDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugsDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugstockDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugstockDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugupdatelogDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Medicinestores\IDrugupdatelogDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPaymentinformationDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPaymentinformationDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPaymentinformationdetailDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPaymentinformationdetailDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPrescriptionorderDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPrescriptionorderDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPrescriptionorderinfoDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Orders\IPrescriptionorderinfoDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IAppointmentregisterDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IAppointmentregisterDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IDiagnosisDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IDiagnosisDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IDiseaseDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IDiseaseDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IRegistersDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IRegistersDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IVisitDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IVisitDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IVisitlogDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Patientvisits\IVisitlogDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Sittingtemplates\ISittingDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Sittingtemplates\ISittingDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Sittingtemplates\ISittingtemplateDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Sittingtemplates\ISittingtemplateDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Dao\Storages\IStoragesDao.cs" />
+    <Compile Include="02-Result\Data\Dao\Storages\IStoragesDaoAsync.cs" />
+    <Compile Include="02-Result\Data\Mapping\Activities\ActivityMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Activities\CouponaddlogMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Activities\CouponcollarMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Activities\CouponlogMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Activities\CouponMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Consults\AnswerMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Consults\ConsultMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Consults\OptionsMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Consults\QuestionnaireMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\ApplicationsMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\DepartmentMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\ResourceMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\StoreMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\TenantMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\TenantuserrelationMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\UserdepartmentMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Essentialinformations\UsersMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Materials\AccessrecordMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Materials\InstockMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Materials\MaterialinventoryMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Materials\MaterialMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DrugallotinfoMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DrugallotMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DrugbatchMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DruginoutinfMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DruginoutinfoMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DruginoutMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DrugsMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DrugstockMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Medicinestores\DrugupdatelogMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Orders\PaymentinformationdetailMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Orders\PaymentinformationMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Orders\PrescriptionorderinfoMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Orders\PrescriptionorderMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Patientvisits\AppointmentregisterMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Patientvisits\DiagnosisMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Patientvisits\DiseaseMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Patientvisits\RegistersMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Patientvisits\VisitlogMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Patientvisits\VisitMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Sittingtemplates\SittingMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Sittingtemplates\SittingtemplateMapping.cs" />
+    <Compile Include="02-Result\Data\Mapping\Storages\StoragesMapping.cs" />
+    <Compile Include="02-Result\Data\Repositories\Activities\ActivityRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Activities\CouponaddlogRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Activities\CouponcollarRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Activities\CouponlogRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Activities\CouponRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Consults\AnswerRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Consults\ConsultRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Consults\OptionsRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Consults\QuestionnaireRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\ApplicationsRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\DepartmentRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\ResourceRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\StoreRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\TenantRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\TenantuserrelationRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\UserdepartmentRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Essentialinformations\UsersRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Materials\AccessrecordRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Materials\InstockRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Materials\MaterialinventoryRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Materials\MaterialRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DrugallotinfoRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DrugallotRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DrugbatchRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DruginoutinfoRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DruginoutinfRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DruginoutRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DrugsRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DrugstockRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Medicinestores\DrugupdatelogRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Orders\PaymentinformationdetailRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Orders\PaymentinformationRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Orders\PrescriptionorderinfoRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Orders\PrescriptionorderRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Patientvisits\AppointmentregisterRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Patientvisits\DiagnosisRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Patientvisits\DiseaseRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Patientvisits\RegistersRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Patientvisits\VisitlogRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Patientvisits\VisitRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Sittingtemplates\SittingRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Sittingtemplates\SittingtemplateRepository.cs" />
+    <Compile Include="02-Result\Data\Repositories\Storages\StoragesRepository.cs" />
+    <Compile Include="02-Result\Domain\Entities\Activities\Activity.Base.cs">
+      <DependentUpon>Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Activities\Activity.cs" />
+    <Compile Include="02-Result\Domain\Entities\Activities\Coupon.Base.cs">
+      <DependentUpon>Coupon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Activities\Coupon.cs" />
+    <Compile Include="02-Result\Domain\Entities\Activities\Couponaddlog.Base.cs">
+      <DependentUpon>Couponaddlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Activities\Couponaddlog.cs" />
+    <Compile Include="02-Result\Domain\Entities\Activities\Couponcollar.Base.cs">
+      <DependentUpon>Couponcollar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Activities\Couponcollar.cs" />
+    <Compile Include="02-Result\Domain\Entities\Activities\Couponlog.Base.cs">
+      <DependentUpon>Couponlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Activities\Couponlog.cs" />
+    <Compile Include="02-Result\Domain\Entities\Consults\Answer.Base.cs">
+      <DependentUpon>Answer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Consults\Answer.cs" />
+    <Compile Include="02-Result\Domain\Entities\Consults\Consult.Base.cs">
+      <DependentUpon>Consult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Consults\Consult.cs" />
+    <Compile Include="02-Result\Domain\Entities\Consults\Options.Base.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Consults\Options.cs" />
+    <Compile Include="02-Result\Domain\Entities\Consults\Questionnaire.Base.cs">
+      <DependentUpon>Questionnaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Consults\Questionnaire.cs" />
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Applications.Base.cs">
+      <DependentUpon>Applications.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Applications.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Department.Base.cs">
+      <DependentUpon>Department.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Department.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Resource.Base.cs">
+      <DependentUpon>Resource.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Resource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Store.Base.cs">
+      <DependentUpon>Store.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Store.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Tenant.Base.cs">
+      <DependentUpon>Tenant.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Tenant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Tenantuserrelation.Base.cs">
+      <DependentUpon>Tenantuserrelation.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Tenantuserrelation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Userdepartment.Base.cs">
+      <DependentUpon>Userdepartment.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Userdepartment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Users.Base.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Essentialinformations\Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Materials\Accessrecord.Base.cs">
+      <DependentUpon>Accessrecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Materials\Accessrecord.cs" />
+    <Compile Include="02-Result\Domain\Entities\Materials\Instock.Base.cs">
+      <DependentUpon>Instock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Materials\Instock.cs" />
+    <Compile Include="02-Result\Domain\Entities\Materials\Material.Base.cs">
+      <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Materials\Material.cs" />
+    <Compile Include="02-Result\Domain\Entities\Materials\Materialinventory.Base.cs">
+      <DependentUpon>Materialinventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Materials\Materialinventory.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugallot.Base.cs">
+      <DependentUpon>Drugallot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugallot.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugallotinfo.Base.cs">
+      <DependentUpon>Drugallotinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugallotinfo.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugbatch.Base.cs">
+      <DependentUpon>Drugbatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugbatch.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Druginout.Base.cs">
+      <DependentUpon>Druginout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Druginout.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Druginoutinf.Base.cs">
+      <DependentUpon>Druginoutinf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Druginoutinf.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Druginoutinfo.Base.cs">
+      <DependentUpon>Druginoutinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Druginoutinfo.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugs.Base.cs">
+      <DependentUpon>Drugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugs.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugstock.Base.cs">
+      <DependentUpon>Drugstock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugstock.cs" />
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugupdatelog.Base.cs">
+      <DependentUpon>Drugupdatelog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Medicinestores\Drugupdatelog.cs" />
+    <Compile Include="02-Result\Domain\Entities\Orders\Paymentinformation.Base.cs">
+      <DependentUpon>Paymentinformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Orders\Paymentinformation.cs" />
+    <Compile Include="02-Result\Domain\Entities\Orders\Paymentinformationdetail.Base.cs">
+      <DependentUpon>Paymentinformationdetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Orders\Paymentinformationdetail.cs" />
+    <Compile Include="02-Result\Domain\Entities\Orders\Prescriptionorder.Base.cs">
+      <DependentUpon>Prescriptionorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Orders\Prescriptionorder.cs" />
+    <Compile Include="02-Result\Domain\Entities\Orders\Prescriptionorderinfo.Base.cs">
+      <DependentUpon>Prescriptionorderinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Orders\Prescriptionorderinfo.cs" />
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Appointmentregister.Base.cs">
+      <DependentUpon>Appointmentregister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Appointmentregister.cs" />
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Diagnosis.Base.cs">
+      <DependentUpon>Diagnosis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Diagnosis.cs" />
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Disease.Base.cs">
+      <DependentUpon>Disease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Disease.cs" />
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Registers.Base.cs">
+      <DependentUpon>Registers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Registers.cs" />
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Visit.Base.cs">
+      <DependentUpon>Visit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Visit.cs" />
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Visitlog.Base.cs">
+      <DependentUpon>Visitlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Patientvisits\Visitlog.cs" />
+    <Compile Include="02-Result\Domain\Entities\Sittingtemplates\Sitting.Base.cs">
+      <DependentUpon>Sitting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Sittingtemplates\Sitting.cs" />
+    <Compile Include="02-Result\Domain\Entities\Sittingtemplates\Sittingtemplate.Base.cs">
+      <DependentUpon>Sittingtemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Sittingtemplates\Sittingtemplate.cs" />
+    <Compile Include="02-Result\Domain\Entities\Storages\Storages.Base.cs">
+      <DependentUpon>Storages.cs</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Entities\Storages\Storages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="02-Result\Domain\Queries\Activities\ActivityQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Activities\CouponaddlogQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Activities\CouponcollarQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Activities\CouponlogQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Activities\CouponQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Consults\AnswerQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Consults\ConsultQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Consults\OptionsQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Consults\QuestionnaireQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\ApplicationsQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\DepartmentQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\ResourceQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\StoreQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\TenantQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\TenantuserrelationQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\UserdepartmentQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Essentialinformations\UsersQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Materials\AccessrecordQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Materials\InstockQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Materials\MaterialinventoryQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Materials\MaterialQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DrugallotinfoQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DrugallotQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DrugbatchQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DruginoutinfoQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DruginoutinfQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DruginoutQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DrugsQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DrugstockQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Medicinestores\DrugupdatelogQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Orders\PaymentinformationdetailQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Orders\PaymentinformationQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Orders\PrescriptionorderinfoQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Orders\PrescriptionorderQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Patientvisits\AppointmentregisterQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Patientvisits\DiagnosisQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Patientvisits\DiseaseQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Patientvisits\RegistersQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Patientvisits\VisitlogQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Patientvisits\VisitQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Sittingtemplates\SittingQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Sittingtemplates\SittingtemplateQuery.cs" />
+    <Compile Include="02-Result\Domain\Queries\Storages\StoragesQuery.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Activities\IActivityRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Activities\ICouponaddlogRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Activities\ICouponcollarRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Activities\ICouponlogRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Activities\ICouponRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Consults\IAnswerRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Consults\IConsultRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Consults\IOptionsRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Consults\IQuestionnaireRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\IApplicationsRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\IDepartmentRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\IResourceRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\IStoreRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\ITenantRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\ITenantuserrelationRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\IUserdepartmentRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Essentialinformations\IUsersRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Materials\IAccessrecordRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Materials\IInstockRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Materials\IMaterialinventoryRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Materials\IMaterialRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDrugallotinfoRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDrugallotRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDrugbatchRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDruginoutinfoRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDruginoutinfRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDruginoutRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDrugsRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDrugstockRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Medicinestores\IDrugupdatelogRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Orders\IPaymentinformationdetailRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Orders\IPaymentinformationRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Orders\IPrescriptionorderinfoRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Orders\IPrescriptionorderRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Patientvisits\IAppointmentregisterRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Patientvisits\IDiagnosisRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Patientvisits\IDiseaseRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Patientvisits\IRegistersRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Patientvisits\IVisitlogRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Patientvisits\IVisitRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Sittingtemplates\ISittingRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Sittingtemplates\ISittingtemplateRepository.cs" />
+    <Compile Include="02-Result\Domain\Repositories\Storages\IStoragesRepository.cs" />
+    <Compile Include="02-Result\Service\Contract\Activities\IActivityService.cs" />
+    <Compile Include="02-Result\Service\Contract\Activities\ICouponaddlogService.cs" />
+    <Compile Include="02-Result\Service\Contract\Activities\ICouponcollarService.cs" />
+    <Compile Include="02-Result\Service\Contract\Activities\ICouponlogService.cs" />
+    <Compile Include="02-Result\Service\Contract\Activities\ICouponService.cs" />
+    <Compile Include="02-Result\Service\Contract\Consults\IAnswerService.cs" />
+    <Compile Include="02-Result\Service\Contract\Consults\IConsultService.cs" />
+    <Compile Include="02-Result\Service\Contract\Consults\IOptionsService.cs" />
+    <Compile Include="02-Result\Service\Contract\Consults\IQuestionnaireService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\IApplicationsService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\IDepartmentService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\IResourceService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\IStoreService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\ITenantService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\ITenantuserrelationService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\IUserdepartmentService.cs" />
+    <Compile Include="02-Result\Service\Contract\Essentialinformations\IUsersService.cs" />
+    <Compile Include="02-Result\Service\Contract\Materials\IAccessrecordService.cs" />
+    <Compile Include="02-Result\Service\Contract\Materials\IInstockService.cs" />
+    <Compile Include="02-Result\Service\Contract\Materials\IMaterialinventoryService.cs" />
+    <Compile Include="02-Result\Service\Contract\Materials\IMaterialService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDrugallotinfoService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDrugallotService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDrugbatchService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDruginoutinfoService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDruginoutinfService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDruginoutService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDrugsService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDrugstockService.cs" />
+    <Compile Include="02-Result\Service\Contract\Medicinestores\IDrugupdatelogService.cs" />
+    <Compile Include="02-Result\Service\Contract\Orders\IPaymentinformationdetailService.cs" />
+    <Compile Include="02-Result\Service\Contract\Orders\IPaymentinformationService.cs" />
+    <Compile Include="02-Result\Service\Contract\Orders\IPrescriptionorderinfoService.cs" />
+    <Compile Include="02-Result\Service\Contract\Orders\IPrescriptionorderService.cs" />
+    <Compile Include="02-Result\Service\Contract\Patientvisits\IAppointmentregisterService.cs" />
+    <Compile Include="02-Result\Service\Contract\Patientvisits\IDiagnosisService.cs" />
+    <Compile Include="02-Result\Service\Contract\Patientvisits\IDiseaseService.cs" />
+    <Compile Include="02-Result\Service\Contract\Patientvisits\IRegistersService.cs" />
+    <Compile Include="02-Result\Service\Contract\Patientvisits\IVisitlogService.cs" />
+    <Compile Include="02-Result\Service\Contract\Patientvisits\IVisitService.cs" />
+    <Compile Include="02-Result\Service\Contract\Sittingtemplates\ISittingService.cs" />
+    <Compile Include="02-Result\Service\Contract\Sittingtemplates\ISittingtemplateService.cs" />
+    <Compile Include="02-Result\Service\Contract\Storages\IStoragesService.cs" />
+    <Compile Include="02-Result\Service\Dtos\Activities\ActivityDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Activities\CouponaddlogDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Activities\CouponcollarDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Activities\CouponDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Activities\CouponlogDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Consults\AnswerDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Consults\ConsultDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Consults\OptionsDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Consults\QuestionnaireDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\ApplicationsDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\DepartmentDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\ResourceDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\StoreDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\TenantDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\TenantuserrelationDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\UserdepartmentDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Essentialinformations\UsersDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Materials\AccessrecordDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Materials\InstockDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Materials\MaterialDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Materials\MaterialinventoryDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DrugallotDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DrugallotinfoDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DrugbatchDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DruginoutDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DruginoutinfDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DruginoutinfoDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DrugsDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DrugstockDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Medicinestores\DrugupdatelogDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Orders\PaymentinformationdetailDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Orders\PaymentinformationDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Orders\PrescriptionorderDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Orders\PrescriptionorderinfoDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Patientvisits\AppointmentregisterDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Patientvisits\DiagnosisDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Patientvisits\DiseaseDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Patientvisits\RegistersDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Patientvisits\VisitDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Patientvisits\VisitlogDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Sittingtemplates\SittingDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Sittingtemplates\SittingtemplateDto.cs" />
+    <Compile Include="02-Result\Service\Dtos\Storages\StoragesDto.cs" />
+    <Compile Include="02-Result\Service\Impl\Activities\ActivityService.cs" />
+    <Compile Include="02-Result\Service\Impl\Activities\CouponaddlogService.cs" />
+    <Compile Include="02-Result\Service\Impl\Activities\CouponcollarService.cs" />
+    <Compile Include="02-Result\Service\Impl\Activities\CouponlogService.cs" />
+    <Compile Include="02-Result\Service\Impl\Activities\CouponService.cs" />
+    <Compile Include="02-Result\Service\Impl\Consults\AnswerService.cs" />
+    <Compile Include="02-Result\Service\Impl\Consults\ConsultService.cs" />
+    <Compile Include="02-Result\Service\Impl\Consults\OptionsService.cs" />
+    <Compile Include="02-Result\Service\Impl\Consults\QuestionnaireService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\ApplicationsService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\DepartmentService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\ResourceService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\StoreService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\TenantService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\TenantuserrelationService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\UserdepartmentService.cs" />
+    <Compile Include="02-Result\Service\Impl\Essentialinformations\UsersService.cs" />
+    <Compile Include="02-Result\Service\Impl\Materials\AccessrecordService.cs" />
+    <Compile Include="02-Result\Service\Impl\Materials\InstockService.cs" />
+    <Compile Include="02-Result\Service\Impl\Materials\MaterialinventoryService.cs" />
+    <Compile Include="02-Result\Service\Impl\Materials\MaterialService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DrugallotinfoService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DrugallotService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DrugbatchService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DruginoutinfoService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DruginoutinfService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DruginoutService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DrugsService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DrugstockService.cs" />
+    <Compile Include="02-Result\Service\Impl\Medicinestores\DrugupdatelogService.cs" />
+    <Compile Include="02-Result\Service\Impl\Orders\PaymentinformationdetailService.cs" />
+    <Compile Include="02-Result\Service\Impl\Orders\PaymentinformationService.cs" />
+    <Compile Include="02-Result\Service\Impl\Orders\PrescriptionorderinfoService.cs" />
+    <Compile Include="02-Result\Service\Impl\Orders\PrescriptionorderService.cs" />
+    <Compile Include="02-Result\Service\Impl\Patientvisits\AppointmentregisterService.cs" />
+    <Compile Include="02-Result\Service\Impl\Patientvisits\DiagnosisService.cs" />
+    <Compile Include="02-Result\Service\Impl\Patientvisits\DiseaseService.cs" />
+    <Compile Include="02-Result\Service\Impl\Patientvisits\RegistersService.cs" />
+    <Compile Include="02-Result\Service\Impl\Patientvisits\VisitlogService.cs" />
+    <Compile Include="02-Result\Service\Impl\Patientvisits\VisitService.cs" />
+    <Compile Include="02-Result\Service\Impl\Sittingtemplates\SittingService.cs" />
+    <Compile Include="02-Result\Service\Impl\Sittingtemplates\SittingtemplateService.cs" />
+    <Compile Include="02-Result\Service\Impl\Storages\StoragesService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="01-Templates\Common\Extensions.cs" />
+    <Compile Include="01-Templates\Common\Generator.cs" />
+    <Compile Include="01-Templates\Common\Model.cs" />
+    <Compile Include="01-Templates\Common\Parser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="01-Templates\Internal\EasyUi\TreeGrid.IndexView.cst" />
+    <None Include="01-Templates\Internal\EasyUi\TreeGrid.QueryFormView.cst" />
+    <None Include="01-Templates\Internal\EntityTest.cst" />
+    <None Include="01-Templates\Internal\DtoTest.cst" />
+    <None Include="01-Templates\Internal\IService.cst" />
+    <None Include="01-Templates\Internal\ItemGroup.cst" />
+    <None Include="01-Templates\Internal\Service.cst" />
+    <None Include="01-Templates\Internal\ServiceTest.cst" />
+    <None Include="01-Templates\Internal\IocConfig.cst" />
+    <None Include="01-Templates\Internal\EntityTest.Data.cst" />
+    <None Include="01-Templates\Internal\DtoExtension.cst" />
+    <None Include="01-Templates\Internal\QueryObject.cst" />
+    <None Include="01-Templates\Internal\Controller.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Form.IndexView.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Form.QueryFormView.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Form.FormView.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Form.DetailView.cst" />
+    <None Include="01-Templates\Internal\IUnitOfWork.cst" />
+    <None Include="01-Templates\Internal\RepositoryBase.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Grid.IndexView.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Grid.Controller.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Detail.IndexView.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Detail.FormView.cst" />
+    <None Include="01-Templates\Internal\Mapping_MySql.cst" />
+    <None Include="01-Templates\Internal\EasyUi\TreeGrid.Controller.cst" />
+    <None Include="01-Templates\Internal\Trees\ITreeService.cst" />
+    <None Include="01-Templates\Internal\Trees\TreeService.cst" />
+    <None Include="01-Templates\Internal\Trees\TreeDtoExtension.cst" />
+    <None Include="01-Templates\Internal\Trees\TreeDto.cst" />
+    <None Include="01-Templates\Internal\Trees\TreeQuery.cst" />
+    <None Include="01-Templates\Internal\Trees\TreeEntity.cst" />
+    <None Include="01-Templates\Internal\UnitOfWork_MySql.cst" />
+    <None Include="01-Templates\Internal\Factory.cst" />
+    <None Include="01-Templates\Internal\EasyUi\Form.Controller.cst" />
+    <None Include="01-Templates\Internal\VueList.cst" />
+    <None Include="01-Templates\Internal\VueEdit.cst" />
+    <None Include="01-Templates\Internal\IDaoAsync.cst" />
+    <None Include="01-Templates\Internal\IDao.cst" />
+    <None Include="01-Templates\Internal\VuePath.cst" />
+    <None Include="02-Result\vue\activities\activity\edit.vue" />
+    <None Include="02-Result\vue\activities\activity\list.vue" />
+    <None Include="02-Result\vue\activities\couponaddlog\edit.vue" />
+    <None Include="02-Result\vue\activities\couponaddlog\list.vue" />
+    <None Include="02-Result\vue\activities\couponcollar\edit.vue" />
+    <None Include="02-Result\vue\activities\couponcollar\list.vue" />
+    <None Include="02-Result\vue\activities\couponlog\edit.vue" />
+    <None Include="02-Result\vue\activities\couponlog\list.vue" />
+    <None Include="02-Result\vue\activities\coupon\edit.vue" />
+    <None Include="02-Result\vue\activities\coupon\list.vue" />
+    <None Include="02-Result\vue\consults\answer\edit.vue" />
+    <None Include="02-Result\vue\consults\answer\list.vue" />
+    <None Include="02-Result\vue\consults\consult\edit.vue" />
+    <None Include="02-Result\vue\consults\consult\list.vue" />
+    <None Include="02-Result\vue\consults\options\edit.vue" />
+    <None Include="02-Result\vue\consults\options\list.vue" />
+    <None Include="02-Result\vue\consults\questionnaire\edit.vue" />
+    <None Include="02-Result\vue\consults\questionnaire\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\applications\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\applications\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\department\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\department\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\resource\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\resource\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\store\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\store\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\tenantuserrelation\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\tenantuserrelation\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\tenant\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\tenant\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\userdepartment\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\userdepartment\list.vue" />
+    <None Include="02-Result\vue\essentialinformations\users\edit.vue" />
+    <None Include="02-Result\vue\essentialinformations\users\list.vue" />
+    <None Include="02-Result\vue\materials\accessrecord\edit.vue" />
+    <None Include="02-Result\vue\materials\accessrecord\list.vue" />
+    <None Include="02-Result\vue\materials\instock\edit.vue" />
+    <None Include="02-Result\vue\materials\instock\list.vue" />
+    <None Include="02-Result\vue\materials\materialinventory\edit.vue" />
+    <None Include="02-Result\vue\materials\materialinventory\list.vue" />
+    <None Include="02-Result\vue\materials\material\edit.vue" />
+    <None Include="02-Result\vue\materials\material\list.vue" />
+    <None Include="02-Result\vue\medicinestores\drugallotinfo\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\drugallotinfo\list.vue" />
+    <None Include="02-Result\vue\medicinestores\drugallot\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\drugallot\list.vue" />
+    <None Include="02-Result\vue\medicinestores\drugbatch\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\drugbatch\list.vue" />
+    <None Include="02-Result\vue\medicinestores\druginoutinfo\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\druginoutinfo\list.vue" />
+    <None Include="02-Result\vue\medicinestores\druginoutinf\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\druginoutinf\list.vue" />
+    <None Include="02-Result\vue\medicinestores\druginout\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\druginout\list.vue" />
+    <None Include="02-Result\vue\medicinestores\drugstock\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\drugstock\list.vue" />
+    <None Include="02-Result\vue\medicinestores\drugs\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\drugs\list.vue" />
+    <None Include="02-Result\vue\medicinestores\drugupdatelog\edit.vue" />
+    <None Include="02-Result\vue\medicinestores\drugupdatelog\list.vue" />
+    <None Include="02-Result\vue\orders\paymentinformationdetail\edit.vue" />
+    <None Include="02-Result\vue\orders\paymentinformationdetail\list.vue" />
+    <None Include="02-Result\vue\orders\paymentinformation\edit.vue" />
+    <None Include="02-Result\vue\orders\paymentinformation\list.vue" />
+    <None Include="02-Result\vue\orders\prescriptionorderinfo\edit.vue" />
+    <None Include="02-Result\vue\orders\prescriptionorderinfo\list.vue" />
+    <None Include="02-Result\vue\orders\prescriptionorder\edit.vue" />
+    <None Include="02-Result\vue\orders\prescriptionorder\list.vue" />
+    <None Include="02-Result\vue\Path\activities\activity\edit.vue" />
+    <None Include="02-Result\vue\Path\activities\couponaddlog\edit.vue" />
+    <None Include="02-Result\vue\Path\activities\couponcollar\edit.vue" />
+    <None Include="02-Result\vue\Path\activities\couponlog\edit.vue" />
+    <None Include="02-Result\vue\Path\activities\coupon\edit.vue" />
+    <None Include="02-Result\vue\Path\consults\answer\edit.vue" />
+    <None Include="02-Result\vue\Path\consults\consult\edit.vue" />
+    <None Include="02-Result\vue\Path\consults\options\edit.vue" />
+    <None Include="02-Result\vue\Path\consults\questionnaire\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\applications\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\department\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\resource\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\store\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\tenantuserrelation\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\tenant\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\userdepartment\edit.vue" />
+    <None Include="02-Result\vue\Path\essentialinformations\users\edit.vue" />
+    <None Include="02-Result\vue\Path\materials\accessrecord\edit.vue" />
+    <None Include="02-Result\vue\Path\materials\instock\edit.vue" />
+    <None Include="02-Result\vue\Path\materials\materialinventory\edit.vue" />
+    <None Include="02-Result\vue\Path\materials\material\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\drugallotinfo\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\drugallot\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\drugbatch\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\druginoutinfo\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\druginout\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\drugstock\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\drugs\edit.vue" />
+    <None Include="02-Result\vue\Path\medicinestores\drugupdatelog\edit.vue" />
+    <None Include="02-Result\vue\Path\orders\paymentinformationdetail\edit.vue" />
+    <None Include="02-Result\vue\Path\orders\paymentinformation\edit.vue" />
+    <None Include="02-Result\vue\Path\orders\prescriptionorderinfo\edit.vue" />
+    <None Include="02-Result\vue\Path\orders\prescriptionorder\edit.vue" />
+    <None Include="02-Result\vue\Path\patientvisits\appointmentregister\edit.vue" />
+    <None Include="02-Result\vue\Path\patientvisits\diagnosis\edit.vue" />
+    <None Include="02-Result\vue\Path\patientvisits\disease\edit.vue" />
+    <None Include="02-Result\vue\Path\patientvisits\registers\edit.vue" />
+    <None Include="02-Result\vue\Path\patientvisits\visitlog\edit.vue" />
+    <None Include="02-Result\vue\Path\patientvisits\visit\edit.vue" />
+    <None Include="02-Result\vue\Path\sittingtemplates\sittingtemplate\edit.vue" />
+    <None Include="02-Result\vue\Path\sittingtemplates\sitting\edit.vue" />
+    <None Include="02-Result\vue\Path\storages\storages\edit.vue" />
+    <None Include="02-Result\vue\Path\VuePath_Activities" />
+    <None Include="02-Result\vue\Path\VuePath_Consults" />
+    <None Include="02-Result\vue\Path\VuePath_Essentialinformations" />
+    <None Include="02-Result\vue\Path\VuePath_Materials" />
+    <None Include="02-Result\vue\Path\VuePath_Medicinestores" />
+    <None Include="02-Result\vue\Path\VuePath_Orders" />
+    <None Include="02-Result\vue\Path\VuePath_Patientvisits" />
+    <None Include="02-Result\vue\Path\VuePath_Sittingtemplates" />
+    <None Include="02-Result\vue\Path\VuePath_Storages" />
+    <None Include="02-Result\vue\patientvisits\appointmentregister\edit.vue" />
+    <None Include="02-Result\vue\patientvisits\appointmentregister\list.vue" />
+    <None Include="02-Result\vue\patientvisits\diagnosis\edit.vue" />
+    <None Include="02-Result\vue\patientvisits\diagnosis\list.vue" />
+    <None Include="02-Result\vue\patientvisits\disease\edit.vue" />
+    <None Include="02-Result\vue\patientvisits\disease\list.vue" />
+    <None Include="02-Result\vue\patientvisits\registers\edit.vue" />
+    <None Include="02-Result\vue\patientvisits\registers\list.vue" />
+    <None Include="02-Result\vue\patientvisits\visitlog\edit.vue" />
+    <None Include="02-Result\vue\patientvisits\visitlog\list.vue" />
+    <None Include="02-Result\vue\patientvisits\visit\edit.vue" />
+    <None Include="02-Result\vue\patientvisits\visit\list.vue" />
+    <None Include="02-Result\vue\sittingtemplates\sittingtemplate\edit.vue" />
+    <None Include="02-Result\vue\sittingtemplates\sittingtemplate\list.vue" />
+    <None Include="02-Result\vue\sittingtemplates\sitting\edit.vue" />
+    <None Include="02-Result\vue\sittingtemplates\sitting\list.vue" />
+    <None Include="02-Result\vue\storages\storages\edit.vue" />
+    <None Include="02-Result\vue\storages\storages\list.vue" />
+    <None Include="Project.csp">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="01-Templates\Entity.cst" />
+    <None Include="01-Templates\Internal\IRepository.cst" />
+    <None Include="01-Templates\Internal\UnitOfWork.cst" />
+    <None Include="01-Templates\Internal\Entity.Editable.cst" />
+    <None Include="01-Templates\Internal\Entity.Generated.cst" />
+    <None Include="01-Templates\Internal\Repository.cst" />
+    <None Include="01-Templates\Internal\Mapping.cst" />
+    <None Include="01-Templates\Internal\Dto.cst" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="02-Result\Domain\Activities\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Consults\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Essentialinformations\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Materials\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Medicinestores\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Orders\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Path\Activities\ItemGroup_Activities..txt" />
+    <Content Include="02-Result\Domain\Path\Consults\ItemGroup_Consults..txt" />
+    <Content Include="02-Result\Domain\Path\Essentialinformations\ItemGroup_Essentialinformations..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Activities..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Consults..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Essentialinformations..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Materials..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Medicinestores..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Orders..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Patientvisits..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Sittingtemplates..txt" />
+    <Content Include="02-Result\Domain\Path\ItemGroup_Storages..txt" />
+    <Content Include="02-Result\Domain\Path\Materials\ItemGroup_Materials..txt" />
+    <Content Include="02-Result\Domain\Path\Medicinestores\ItemGroup_Medicinestores..txt" />
+    <Content Include="02-Result\Domain\Path\Orders\ItemGroup_Orders..txt" />
+    <Content Include="02-Result\Domain\Path\Patientvisits\ItemGroup_Patientvisits..txt" />
+    <Content Include="02-Result\Domain\Path\Sittingtemplates\ItemGroup_Sittingtemplates..txt" />
+    <Content Include="02-Result\Domain\Path\Storages\ItemGroup_Storages..txt" />
+    <Content Include="02-Result\Domain\Patientvisits\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Sittingtemplates\ItemGroup..txt" />
+    <Content Include="02-Result\Domain\Storages\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\activities\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\consults\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\essentialinformations\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\materials\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\medicinestores\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\orders\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\patientvisits\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\sittingtemplates\ItemGroup..txt" />
+    <Content Include="02-Result\vue\Path\storages\ItemGroup..txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

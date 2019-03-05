@@ -1,0 +1,18 @@
+﻿{
+    path: '/orders',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'orders',
+    meta: { title: 'orders', icon: 'component' },
+children: [
+    { path: 'paymentinformation', component: _import('orders/paymentinformation/list'), name: 'paymentinformation', meta: { title: 'paymentinformation', icon: 'paymentinformation', noCache: true }},
+    { path: 'paymentinformationdetail', component: _import('orders/paymentinformationdetail/list'), name: 'paymentinformationdetail', meta: { title: 'paymentinformationdetail', icon: 'paymentinformationdetail', noCache: true }},
+    { path: 'prescriptionorder', component: _import('orders/prescriptionorder/list'), name: 'prescriptionorder', meta: { title: 'prescriptionorder', icon: 'prescriptionorder', noCache: true }},
+    { path: 'prescriptionorderinfo', component: _import('orders/prescriptionorderinfo/list'), name: 'prescriptionorderinfo', meta: { title: 'prescriptionorderinfo', icon: 'prescriptionorderinfo', noCache: true }},
+]
+},
+orders: 'orders',
+    paymentinformation: '支付信息',
+    paymentinformationdetail: ' 支付信息明细',
+    prescriptionorder: '订单处方',
+    prescriptionorderinfo: '订单明细',

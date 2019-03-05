@@ -1,0 +1,12 @@
+﻿{
+    path: '/storages',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'storages',
+    meta: { title: 'storages', icon: 'component' },
+children: [
+    { path: 'storages', component: _import('storages/storages/list'), name: 'storages', meta: { title: 'storages', icon: 'storages', noCache: true }},
+]
+},
+storages: 'storages',
+    storages: '存储',

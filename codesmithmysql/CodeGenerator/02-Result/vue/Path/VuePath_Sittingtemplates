@@ -1,0 +1,14 @@
+﻿{
+    path: '/sittingtemplates',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'sittingtemplates',
+    meta: { title: 'sittingtemplates', icon: 'component' },
+children: [
+    { path: 'sitting', component: _import('sittingtemplates/sitting/list'), name: 'sitting', meta: { title: 'sitting', icon: 'sitting', noCache: true }},
+    { path: 'sittingtemplate', component: _import('sittingtemplates/sittingtemplate/list'), name: 'sittingtemplate', meta: { title: 'sittingtemplate', icon: 'sittingtemplate', noCache: true }},
+]
+},
+sittingtemplates: 'sittingtemplates',
+    sitting: ' 医生坐诊表',
+    sittingtemplate: ' 坐诊模板',

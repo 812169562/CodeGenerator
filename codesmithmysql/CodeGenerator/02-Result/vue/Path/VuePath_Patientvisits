@@ -1,0 +1,22 @@
+﻿{
+    path: '/patientvisits',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'patientvisits',
+    meta: { title: 'patientvisits', icon: 'component' },
+children: [
+    { path: 'appointmentregister', component: _import('patientvisits/appointmentregister/list'), name: 'appointmentregister', meta: { title: 'appointmentregister', icon: 'appointmentregister', noCache: true }},
+    { path: 'diagnosis', component: _import('patientvisits/diagnosis/list'), name: 'diagnosis', meta: { title: 'diagnosis', icon: 'diagnosis', noCache: true }},
+    { path: 'disease', component: _import('patientvisits/disease/list'), name: 'disease', meta: { title: 'disease', icon: 'disease', noCache: true }},
+    { path: 'registers', component: _import('patientvisits/registers/list'), name: 'registers', meta: { title: 'registers', icon: 'registers', noCache: true }},
+    { path: 'visit', component: _import('patientvisits/visit/list'), name: 'visit', meta: { title: 'visit', icon: 'visit', noCache: true }},
+    { path: 'visitlog', component: _import('patientvisits/visitlog/list'), name: 'visitlog', meta: { title: 'visitlog', icon: 'visitlog', noCache: true }},
+]
+},
+patientvisits: 'patientvisits',
+    appointmentregister: '预约挂号',
+    diagnosis: '诊断信息',
+    disease: '四诊信息',
+    registers: '挂号信息',
+    visit: '就诊信息',
+    visitlog: '就诊记录修改记录表',

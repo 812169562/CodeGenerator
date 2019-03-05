@@ -1,7 +1,6 @@
 ﻿################################################################################
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
-*CodeGenerator
 *.vs
 *bin
 *obj
@@ -9,7 +8,6 @@
 *packages
 *lut
 *pdb
-/CodeGenerator
 /sand/.vs
 /sand/.vs/Sand/lut
 /Sand/obj/Debug

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <variables>
+    <add key="ConnectionString1" value="Data Source=DESKTOP-SNRDTHH;Initial Catalog=sand;User ID=sa;Password=sa" />
+    <add key="ConnectionString2" value="Data Source=DESKTOP-SNRDTHH;Initial Catalog=Sand;User ID=sa;Password=sa" />
+    <add key="ConnectionString3" value="Data Source=DESKTOP-9G02PJO\MSSQLSERVER3;Initial Catalog=sand;User ID=sa;Password=sa" />
+    <add key="ConnectionString4" value="data source=210.41.215.31;initial catalog=sand;user id=sa;password=cdutcm@DB&amp;2016" />
+    <add key="ConnectionString5" value="server=210.41.215.43;database=sand;user=root;password=cdsg2018;SslMode=none;" />
+    <add key="ConnectionString6" value="server=210.41.215.43;database=activities;user=root;password=cdsg2018;SslMode=none;" />
+  </variables>
+  <propertySets>
+    <propertySet name="mysql" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString5)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">Sand</property>
+    </propertySet>
+    <propertySet name="Copy of mysql" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+      <string>sysdiagrams$</string>
+    </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+      <string>^(sp|tbl|udf|vw)_</string>
+    </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString6)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">Sand</property>
+    </propertySet>
+  </propertySets>
+</codeSmith>

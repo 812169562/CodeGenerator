@@ -1,0 +1,18 @@
+﻿{
+    path: '/consults',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'consults',
+    meta: { title: 'consults', icon: 'component' },
+children: [
+    { path: 'answer', component: _import('consults/answer/list'), name: 'answer', meta: { title: 'answer', icon: 'answer', noCache: true }},
+    { path: 'consult', component: _import('consults/consult/list'), name: 'consult', meta: { title: 'consult', icon: 'consult', noCache: true }},
+    { path: 'options', component: _import('consults/options/list'), name: 'options', meta: { title: 'options', icon: 'options', noCache: true }},
+    { path: 'questionnaire', component: _import('consults/questionnaire/list'), name: 'questionnaire', meta: { title: 'questionnaire', icon: 'questionnaire', noCache: true }},
+]
+},
+consults: 'consults',
+    answer: '答案表',
+    consult: '咨询',
+    options: '选项表',
+    questionnaire: '问卷表',

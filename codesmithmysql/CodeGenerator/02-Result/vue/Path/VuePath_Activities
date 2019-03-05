@@ -1,0 +1,20 @@
+﻿{
+    path: '/activities',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'activities',
+    meta: { title: 'activities', icon: 'component' },
+children: [
+    { path: 'activity', component: _import('activities/activity/list'), name: 'activity', meta: { title: 'activity', icon: 'activity', noCache: true }},
+    { path: 'coupon', component: _import('activities/coupon/list'), name: 'coupon', meta: { title: 'coupon', icon: 'coupon', noCache: true }},
+    { path: 'couponaddlog', component: _import('activities/couponaddlog/list'), name: 'couponaddlog', meta: { title: 'couponaddlog', icon: 'couponaddlog', noCache: true }},
+    { path: 'couponcollar', component: _import('activities/couponcollar/list'), name: 'couponcollar', meta: { title: 'couponcollar', icon: 'couponcollar', noCache: true }},
+    { path: 'couponlog', component: _import('activities/couponlog/list'), name: 'couponlog', meta: { title: 'couponlog', icon: 'couponlog', noCache: true }},
+]
+},
+activities: 'activities',
+    activity: '优惠活动 ',
+    coupon: '优惠券',
+    couponaddlog: '优惠卷库存新增记录',
+    couponcollar: '优惠券领用',
+    couponlog: '优惠卷消费记录',

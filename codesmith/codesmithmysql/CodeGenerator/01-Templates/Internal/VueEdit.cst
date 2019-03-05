@@ -1,0 +1,148 @@
+﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
+
+<%@ Assembly Src="..\Common\Model.cs" %>
+<%@ Assembly Src="..\Common\Extensions.cs" %>
+
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%@ Import Namespace="SchemaMapper" %>
+
+<%@ Property Name="Entity" Type="SchemaMapper.Entity"  %>
+<%@ Property Name="Namespace" Type="System.String" %>
+<% string SafeClassName = Entity.ClassName.ToCamelCase(); %>
+<% string ClassName = Entity.ClassName.ToPascalCase(); %>
+<% string ClassNameToLower = Entity.ClassName.ToLower(); %>
+<% string Description = Entity.Description; %>
+<template>
+ <el-dialog :title="title" :visible.sync="dialogVisible" width="55%" height="75%" :close-on-click-modal="false" :before-close="hidden" @open="open"  @close="hidden">
+    <div :style="editstyle">
+	<el-form :model="form">
+    <% foreach(Property p in Entity.Properties) { %>
+        <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+        <% if(p.PropertyName=="TenantId") continue; %>
+        <% if(p.PropertyName=="Version") continue; %>
+        <% if(p.PropertyName=="IsDeleted") continue; %>
+        <% if(p.PropertyName=="IsEnable") continue; %>
+        <% if(p.PropertyName=="CreateTime") continue; %>
+        <% if(p.PropertyName=="CreateId") continue; %>
+        <% if(p.PropertyName=="CreateName") continue; %>
+        <% if(p.PropertyName=="LastUpdateTime") continue; %>
+        <% if(p.PropertyName=="LastUpdateId") continue; %>
+        <% if(p.PropertyName=="LastUpdateName") continue; %>
+        <% if(p.PropertyName=="IsEnable") continue; %>
+        <% if(p.PropertyName=="Status") continue; %>
+        <% if( p.SystemType == typeof(System.DateTime)) {%>
+         <mu-date-picker  label="<%=p.Description%>" hintText="请输入<%=p.Description%>" v-model="form.<%=p.PropertyName.ToCamelCase()%>"  lab labelFloat/>
+        <%} else if( p.SystemType == typeof(bool)){%>
+         <mu-switch label="<%=p.Description%>" v-model="form.<%=p.PropertyName.ToCamelCase()%>" /><br/>
+        <%} else {%>
+         <mu-text-field label="<%=p.Description%>" hintText="请输入<%=p.Description%>" v-model="form.<%=p.PropertyName.ToCamelCase()%>"  lab labelFloat/>
+        <%} %>
+  <% }%>
+  </el-form>
+  </div>
+  <span slot="footer" class="dialog-footer">
+     <el-button type="danger" @click="hidden()" plain>取 消</el-button>
+     <el-button type="primary" @click="save()" plain>确 定</el-button>
+  </span>
+</el-dialog>
+</template>
+<script>
+export default {
+  /** 组件名称 */
+  name: '<%=SafeClassName%>-edit',
+  /** 属性
+   * @property 是否可见
+   * @property 选中数据编号
+   */
+  props: {
+    dialogVisible: {
+      type: Boolean,
+      default: false
+    },
+    id: {
+      type: String,
+      default: ''
+    },
+	editstyle: {
+      type: String,
+      default: ''
+    }
+  },
+  /** 绑定数据 */
+  data() {
+    return {
+      /** 表单数据 */
+      form: {},
+      /** 表单标题 */
+      title: '新增<%=Description%>信息'
+    }
+  },
+  methods: {
+    /** 初始化 */
+    init() {
+      this.form = {
+        <% var index=0;%>
+        <% foreach(Property p in Entity.Properties) { index =index+1;%>
+        <% if(p.PropertyName=="Id") continue; %>
+        <% if(p.PropertyName=="Version") continue; %>
+        <% if(p.PropertyName=="IsEnable") continue; %>
+        <% if(p.PropertyName=="CreateTime") continue; %>
+        <% if(p.PropertyName=="CreateId") continue; %>
+        <% if(p.PropertyName=="CreateName") continue; %>
+        <% if(p.PropertyName=="LastUpdateTime") continue; %>
+        <% if(p.PropertyName=="LastUpdateId") continue; %>
+        <% if(p.PropertyName=="LastUpdateName") continue; %>
+        <% if(p.PropertyName=="IsEnable") continue; %>
+        <% if(p.PropertyName=="Status") continue; %>
+        <% if(p.PropertyName=="TenantId") continue; %>
+        <%if(p.TypeName.Contains("int")){ %>
+        /** <%=p.Description%> */
+        <%=p.PropertyName.ToCamelCase()%>: 0,
+        <% continue; } %>
+         <%if(p.TypeName.Contains("Date")){ %>
+        /** <%=p.Description%> */
+        <%=p.PropertyName.ToCamelCase()%>: Date.now(),
+        <% continue; } %>
+            <%if(p.TypeName.Contains("dec")){ %>
+        /** <%=p.Description%> */
+        <%=p.PropertyName.ToCamelCase()%>: 0,
+        <% continue; } %>
+        /** <%=p.Description%> */
+        <%=p.PropertyName.ToCamelCase()%>: '',
+  <% }%>
+        /**  页面缓存*/
+        pagecache: ''
+      }
+    },
+    /** 隐藏页面 */
+    hidden(refresh) {
+      this.$emit('closeAdd', false, refresh)
+    },
+    /** 保存页面信息 */
+    save() {
+      const _this = this
+      this.$request.save('<%=ClassNameToLower%>', this.form, function(respose) {
+        if (respose.code === 1) {
+          _this.init()
+          _this.hidden(true)
+        }
+      }, this.id)
+    },
+    /** 打开页面信息 */
+    open() {
+      if (!this.id) {
+        this.init()
+      } else {
+        this.title = '编辑<%=Description%>信息'
+        const _this = this
+        this.$request.get('<%=ClassNameToLower%>/' + this.id, {}, (respose) => {
+          _this.form = respose.data
+        })
+      }
+    }
+  }
+}
+</script>

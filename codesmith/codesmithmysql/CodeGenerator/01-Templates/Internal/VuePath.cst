@@ -1,0 +1,28 @@
+﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
+
+<%@ Assembly Src="..\Common\Model.cs" %>
+<%@ Assembly Src="..\Common\Extensions.cs" %>
+
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%@ Import Namespace="SchemaMapper" %>
+
+<%@ Property Name="Entities" Type="List<Entity>"  %>
+{
+    path: <%= "'/"+Entities[0].TableSchema.ToLower()+"'" %>,
+    component: Layout,
+    redirect: 'noredirect',
+    name: <%= "'"+Entities[0].TableSchema.ToLower()+"'" %>,
+    meta: { title: <%= "'"+Entities[0].TableSchema.ToLower()+"'" %>, icon: 'component' },
+children: [
+<% foreach( Entity entity in Entities ) {%> 
+    { path: '<%= entity.ClassName.ToLower()%>', component: _import('<%= entity.TableSchema.ToLower()%><%= "/"+entity.ClassName.ToLower() %>/list'), name: '<%= entity.ClassName.ToLower()%>', meta: { title: '<%= entity.ClassName.ToLower()%>', icon: '<%= entity.ClassName.ToLower()%>', noCache: true }},
+<% }%>
+]
+},
+<%= Entities[0].TableSchema.ToLower()%>: '<%= Entities[0].TableSchema.ToLower()%>',
+<% foreach( Entity entity in Entities ) {%> 
+    <%= entity.ClassName.ToLower()%>: '<%= entity.Description.ToLower()%>',
+<% }%>
