@@ -5,11 +5,20 @@
     <add key="ConnectionString2" value="Data Source=DESKTOP-SNRDTHH;Initial Catalog=Sand;User ID=sa;Password=sa" />
     <add key="ConnectionString3" value="Data Source=DESKTOP-9G02PJO\MSSQLSERVER3;Initial Catalog=sand;User ID=sa;Password=sa" />
     <add key="ConnectionString4" value="data source=210.41.215.31;initial catalog=sand;user id=sa;password=cdutcm@DB&amp;2016" />
-    <add key="ConnectionString5" value="server=210.41.215.43;database=sand;user=root;password=cdsg2018;SslMode=none;" />
-    <add key="ConnectionString6" value="server=210.41.215.43;database=activities;user=root;password=cdsg2018;SslMode=none;" />
+    <add key="ConnectionString5" value="server=localhost;database=sand;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString6" value="server=localhost;database=activities;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString7" value="server=localhost;database=consults;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString8" value="server=localhost;database=essentialinformations;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString9" value="server=localhost;database=materials;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString10" value="server=localhost;database=medicinestores;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString11" value="server=localhost;database=orders;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString12" value="server=localhost;database=patientvisits;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString13" value="server=localhost;database=sittingtemplates;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString14" value="server=localhost;database=storages;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString15" value="server=localhost;database=systems;user=root;password=root;" />
   </variables>
   <propertySets>
-    <propertySet name="mysql" template="01-Templates\Entity.cst">
+    <propertySet name="activities" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
       <property name="EntityNaming">Singular</property>
       <property name="RelationshipNaming">Plural</property>
@@ -26,34 +35,218 @@
         </stringList>
       </property>
       <property name="Database">
-        <connectionString>$(ConnectionString5)</connectionString>
+        <connectionString>$(ConnectionString6)</connectionString>
         <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
       </property>
       <property name="Namespace">Sand</property>
-      <property name="DbName">Sand</property>
+      <property name="DbName">activities </property>
     </propertySet>
-    <propertySet name="Copy of mysql" template="01-Templates\Entity.cst">
+    <propertySet name="consults" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
       <property name="EntityNaming">Singular</property>
       <property name="RelationshipNaming">Plural</property>
       <property name="ContextNaming">Plural</property>
       <property name="IgnoreList">
         <stringList>
-      <string>sysdiagrams$</string>
-    </stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
       </property>
       <property name="InclusionMode">False</property>
       <property name="CleanExpressions">
         <stringList>
-      <string>^(sp|tbl|udf|vw)_</string>
-    </stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
       </property>
       <property name="Database">
-        <connectionString>$(ConnectionString6)</connectionString>
+        <connectionString>$(ConnectionString7)</connectionString>
         <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
       </property>
       <property name="Namespace">Sand</property>
-      <property name="DbName">Sand</property>
+      <property name="DbName">consults</property>
+    </propertySet>
+    <propertySet name="essentialinformations" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString8)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">essentialinformations</property>
+    </propertySet>
+    <propertySet name="materials" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString9)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">materials</property>
+    </propertySet>
+    <propertySet name="medicinestores" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString10)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">medicinestores</property>
+    </propertySet>
+    <propertySet name="orders" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString11)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">orders</property>
+    </propertySet>
+    <propertySet name="patientvisits" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString12)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">patientvisits</property>
+    </propertySet>
+    <propertySet name="sittingtemplates" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString13)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">sittingtemplates</property>
+    </propertySet>
+    <propertySet name="storages" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString14)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">storages</property>
+    </propertySet>
+    <propertySet name="systems" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString15)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Systems</property>
+      <property name="DbName">systems</property>
     </propertySet>
   </propertySets>
 </codeSmith>

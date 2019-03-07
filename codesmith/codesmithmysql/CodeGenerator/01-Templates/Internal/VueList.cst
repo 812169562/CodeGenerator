@@ -106,7 +106,9 @@ export default {
       /** 当前窗体高度 */
       fullHeight: document.documentElement.clientHeight - 200,
       /** 子页面编号 */
-      childId: ''
+      childId: '',
+       /** 子页面容器样式 */
+      editstyle: ''
     }
   },
   /**  初始化只执行一次 */

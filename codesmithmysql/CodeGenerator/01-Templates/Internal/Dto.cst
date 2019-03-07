@@ -27,6 +27,7 @@ if( Entity.IsTreeEntity() ){
 }
 %>
 using System;
+using Sand.Service; 
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 

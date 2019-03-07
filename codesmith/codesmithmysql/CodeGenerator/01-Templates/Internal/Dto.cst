@@ -11,7 +11,7 @@
 <%@ Import Namespace="SchemaMapper" %>
 
 <%@ Property Name="Entity" Type="SchemaMapper.Entity"  %>
-
+<%@ Property Name="Namespace" Type="System.String" %>
 <%-- Safe类名 --%>
 <% string SafeClassName = Entity.ClassName.ToSafeName(); %>
 <%-- 描述 --%>
