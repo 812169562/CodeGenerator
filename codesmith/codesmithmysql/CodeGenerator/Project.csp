@@ -16,8 +16,32 @@
     <add key="ConnectionString13" value="server=localhost;database=sittingtemplates;user=root;password=root;SslMode=none;" />
     <add key="ConnectionString14" value="server=localhost;database=storages;user=root;password=root;SslMode=none;" />
     <add key="ConnectionString15" value="server=localhost;database=systems;user=root;password=root;" />
+    <add key="ConnectionString16" value="server=localhost;database=consultation;user=root;password=root;SslMode=none;" />
   </variables>
   <propertySets>
+    <propertySet name="consultation" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString16)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Consultations</property>
+      <property name="DbName">consultation</property>
+    </propertySet>
     <propertySet name="activities" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
       <property name="EntityNaming">Singular</property>

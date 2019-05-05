@@ -16,7 +16,7 @@
 <% string ClassNameToLower = Entity.ClassName.ToLower(); %>
 <% string Description = Entity.Description; %>
 <template>
- <el-dialog :title="title" :visible.sync="dialogVisible" width="55%" height="75%" :close-on-click-modal="false" :before-close="hidden" @open="open"  @close="hidden">
+ <el-dialog v-el-drag-dialog :title="title" :visible.sync="dialogVisible" width="55%" height="75%" :close-on-click-modal="false" :before-close="hidden" @open="open"  @close="hidden">
     <div :style="editstyle">
 	<el-form :model="form">
     <% foreach(Property p in Entity.Properties) { %>
@@ -50,7 +50,9 @@
 </el-dialog>
 </template>
 <script>
+import elDragDialog from '@/directive/el-dragDialog'
 export default {
+  directives: { elDragDialog },
   /** 组件名称 */
   name: '<%=SafeClassName%>-edit',
   /** 属性
