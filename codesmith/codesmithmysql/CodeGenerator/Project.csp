@@ -17,9 +17,15 @@
     <add key="ConnectionString14" value="server=localhost;database=storages;user=root;password=root;SslMode=none;" />
     <add key="ConnectionString15" value="server=localhost;database=systems;user=root;password=root;" />
     <add key="ConnectionString16" value="server=localhost;database=consultation;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString17" value="server=210.41.215.31;database=visitingcard;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString18" value="server=210.41.215.31;database=scheduling;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString19" value="server=210.41.215.31;database=PaymentOrder;user=root;password=root;SslMode=none;" />
+    <add key="ConnectionString20" value="server=210.41.215.31;database=systems;user=root;password=root;" />
+    <add key="ConnectionString21" value="server=210.41.215.31;database=medicalrecords;user=root;password=root;" />
+    <add key="ConnectionString22" value="server=210.41.215.31;database=chat;user=root;password=root;SslMode=none;" />
   </variables>
   <propertySets>
-    <propertySet name="consultation" template="01-Templates\Entity.cst">
+    <propertySet name="scheduling" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
       <property name="EntityNaming">Singular</property>
       <property name="RelationshipNaming">Plural</property>
@@ -35,12 +41,12 @@
           <string>^(sp|tbl|udf|vw)_</string>
         </stringList>
       </property>
+      <property name="Namespace">schedulings</property>
+      <property name="DbName">scheduling</property>
       <property name="Database">
-        <connectionString>$(ConnectionString16)</connectionString>
+        <connectionString>$(ConnectionString18)</connectionString>
         <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
       </property>
-      <property name="Namespace">Consultations</property>
-      <property name="DbName">consultation</property>
     </propertySet>
     <propertySet name="activities" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
@@ -65,7 +71,7 @@
       <property name="Namespace">Sand</property>
       <property name="DbName">activities </property>
     </propertySet>
-    <propertySet name="consults" template="01-Templates\Entity.cst">
+    <propertySet name="PaymentOrder" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
       <property name="EntityNaming">Singular</property>
       <property name="RelationshipNaming">Plural</property>
@@ -81,12 +87,12 @@
           <string>^(sp|tbl|udf|vw)_</string>
         </stringList>
       </property>
+      <property name="Namespace">Sand</property>
+      <property name="DbName">PaymentOrder</property>
       <property name="Database">
-        <connectionString>$(ConnectionString7)</connectionString>
+        <connectionString>$(ConnectionString19)</connectionString>
         <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
       </property>
-      <property name="Namespace">Sand</property>
-      <property name="DbName">consults</property>
     </propertySet>
     <propertySet name="essentialinformations" template="01-Templates\Entity.cst">
       <property name="TableNaming">Singular</property>
@@ -197,7 +203,7 @@
         </stringList>
       </property>
       <property name="Database">
-        <connectionString>$(ConnectionString12)</connectionString>
+        <connectionString>$(ConnectionString17)</connectionString>
         <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
       </property>
       <property name="Namespace">Sand</property>
@@ -266,11 +272,80 @@
         </stringList>
       </property>
       <property name="Database">
-        <connectionString>$(ConnectionString15)</connectionString>
+        <connectionString>$(ConnectionString20)</connectionString>
         <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
       </property>
       <property name="Namespace">Systems</property>
       <property name="DbName">systems</property>
+    </propertySet>
+    <propertySet name="md" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Namespace">medicalrecords</property>
+      <property name="DbName">medicalrecords</property>
+      <property name="Database">
+        <connectionString>$(ConnectionString21)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+    </propertySet>
+    <propertySet name="Visitingcard" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString17)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Visitingcard</property>
+      <property name="DbName">Visitingcard</property>
+    </propertySet>
+    <propertySet name="chat" template="01-Templates\Entity.cst">
+      <property name="TableNaming">Singular</property>
+      <property name="EntityNaming">Singular</property>
+      <property name="RelationshipNaming">Plural</property>
+      <property name="ContextNaming">Plural</property>
+      <property name="IgnoreList">
+        <stringList>
+          <string>sysdiagrams$</string>
+        </stringList>
+      </property>
+      <property name="InclusionMode">False</property>
+      <property name="CleanExpressions">
+        <stringList>
+          <string>^(sp|tbl|udf|vw)_</string>
+        </stringList>
+      </property>
+      <property name="Database">
+        <connectionString>$(ConnectionString22)</connectionString>
+        <providerType>SchemaExplorer.MySQLSchemaProvider,SchemaExplorer.MySQLSchemaProvider</providerType>
+      </property>
+      <property name="Namespace">Chat</property>
+      <property name="DbName">Chat</property>
     </propertySet>
   </propertySets>
 </codeSmith>

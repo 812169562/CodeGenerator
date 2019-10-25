@@ -71,76 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="02-Result\Controllers\Systems\PermissionsController.cs" />
-    <Compile Include="02-Result\Controllers\Systems\RolesController.cs" />
-    <Compile Include="02-Result\Controllers\Systems\TenantController.cs" />
-    <Compile Include="02-Result\Controllers\Systems\TenantresourceController.cs" />
-    <Compile Include="02-Result\Controllers\Systems\UserrolesController.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\IPermissionsDao.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\IPermissionsDaoAsync.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\IRolesDao.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\IRolesDaoAsync.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\ITenantDao.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\ITenantDaoAsync.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\ITenantresourceDao.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\ITenantresourceDaoAsync.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\IUserrolesDao.cs" />
-    <Compile Include="02-Result\Data\Dao\Systems\IUserrolesDaoAsync.cs" />
-    <Compile Include="02-Result\Data\Mapping\Systems\PermissionsMapping.cs" />
-    <Compile Include="02-Result\Data\Mapping\Systems\RolesMapping.cs" />
-    <Compile Include="02-Result\Data\Mapping\Systems\TenantMapping.cs" />
-    <Compile Include="02-Result\Data\Mapping\Systems\TenantresourceMapping.cs" />
-    <Compile Include="02-Result\Data\Mapping\Systems\UserrolesMapping.cs" />
-    <Compile Include="02-Result\Data\Repositories\Systems\PermissionsRepository.cs" />
-    <Compile Include="02-Result\Data\Repositories\Systems\RolesRepository.cs" />
-    <Compile Include="02-Result\Data\Repositories\Systems\TenantRepository.cs" />
-    <Compile Include="02-Result\Data\Repositories\Systems\TenantresourceRepository.cs" />
-    <Compile Include="02-Result\Data\Repositories\Systems\UserrolesRepository.cs" />
-    <Compile Include="02-Result\Domain\Entities\Systems\Permissions.Base.cs">
-      <DependentUpon>Permissions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="02-Result\Domain\Entities\Systems\Permissions.cs" />
-    <Compile Include="02-Result\Domain\Entities\Systems\Roles.Base.cs">
-      <DependentUpon>Roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="02-Result\Domain\Entities\Systems\Roles.cs" />
-    <Compile Include="02-Result\Domain\Entities\Systems\Tenant.Base.cs">
-      <DependentUpon>Tenant.cs</DependentUpon>
-    </Compile>
-    <Compile Include="02-Result\Domain\Entities\Systems\Tenant.cs" />
-    <Compile Include="02-Result\Domain\Entities\Systems\Tenantresource.Base.cs">
-      <DependentUpon>Tenantresource.cs</DependentUpon>
-    </Compile>
-    <Compile Include="02-Result\Domain\Entities\Systems\Tenantresource.cs" />
-    <Compile Include="02-Result\Domain\Entities\Systems\Userroles.Base.cs">
-      <DependentUpon>Userroles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="02-Result\Domain\Entities\Systems\Userroles.cs" />
-    <Compile Include="02-Result\Domain\Queries\Systems\PermissionsQuery.cs" />
-    <Compile Include="02-Result\Domain\Queries\Systems\RolesQuery.cs" />
-    <Compile Include="02-Result\Domain\Queries\Systems\TenantQuery.cs" />
-    <Compile Include="02-Result\Domain\Queries\Systems\TenantresourceQuery.cs" />
-    <Compile Include="02-Result\Domain\Queries\Systems\UserrolesQuery.cs" />
-    <Compile Include="02-Result\Domain\Repositories\Systems\IPermissionsRepository.cs" />
-    <Compile Include="02-Result\Domain\Repositories\Systems\IRolesRepository.cs" />
-    <Compile Include="02-Result\Domain\Repositories\Systems\ITenantRepository.cs" />
-    <Compile Include="02-Result\Domain\Repositories\Systems\ITenantresourceRepository.cs" />
-    <Compile Include="02-Result\Domain\Repositories\Systems\IUserrolesRepository.cs" />
-    <Compile Include="02-Result\Service\Contract\Systems\IPermissionsService.cs" />
-    <Compile Include="02-Result\Service\Contract\Systems\IRolesService.cs" />
-    <Compile Include="02-Result\Service\Contract\Systems\ITenantresourceService.cs" />
-    <Compile Include="02-Result\Service\Contract\Systems\ITenantService.cs" />
-    <Compile Include="02-Result\Service\Contract\Systems\IUserrolesService.cs" />
-    <Compile Include="02-Result\Service\Dtos\Systems\PermissionsDto.cs" />
-    <Compile Include="02-Result\Service\Dtos\Systems\RolesDto.cs" />
-    <Compile Include="02-Result\Service\Dtos\Systems\TenantDto.cs" />
-    <Compile Include="02-Result\Service\Dtos\Systems\TenantresourceDto.cs" />
-    <Compile Include="02-Result\Service\Dtos\Systems\UserrolesDto.cs" />
-    <Compile Include="02-Result\Service\Impl\Systems\PermissionsService.cs" />
-    <Compile Include="02-Result\Service\Impl\Systems\RolesService.cs" />
-    <Compile Include="02-Result\Service\Impl\Systems\TenantresourceService.cs" />
-    <Compile Include="02-Result\Service\Impl\Systems\TenantService.cs" />
-    <Compile Include="02-Result\Service\Impl\Systems\UserrolesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="01-Templates\Common\Extensions.cs" />
     <Compile Include="01-Templates\Common\Generator.cs" />
@@ -186,19 +116,6 @@
     <None Include="01-Templates\Internal\VueEdit.cst" />
     <None Include="01-Templates\Internal\IDaoAsync.cst" />
     <None Include="01-Templates\Internal\IDao.cst" />
-    <None Include="02-Result\vue\Path\VuePath_Systems" />
-    <None Include="02-Result\vue\systems\permissions\edit.vue" />
-    <None Include="02-Result\vue\systems\permissions\list.vue" />
-    <None Include="02-Result\vue\systems\roles\edit.vue" />
-    <None Include="02-Result\vue\systems\roles\list.vue" />
-    <None Include="02-Result\vue\systems\tenantresource\edit.vue" />
-    <None Include="02-Result\vue\systems\tenantresource\list.vue" />
-    <None Include="02-Result\vue\systems\tenant\edit.vue" />
-    <None Include="02-Result\vue\systems\tenant\list.vue">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="02-Result\vue\systems\userroles\edit.vue" />
-    <None Include="02-Result\vue\systems\userroles\list.vue" />
     <None Include="Project.csp">
       <SubType>Designer</SubType>
     </None>
@@ -210,9 +127,6 @@
     <None Include="01-Templates\Internal\Repository.cst" />
     <None Include="01-Templates\Internal\Mapping.cst" />
     <None Include="01-Templates\Internal\Dto.cst" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="02-Result\Domain\Path\ItemGroup_Systems..txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

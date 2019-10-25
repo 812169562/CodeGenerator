@@ -720,7 +720,7 @@ namespace SchemaMapper
         {
             if (IsRequired == false)
                 return;
-            result.Add(string.Format("[Required(ErrorMessage = \"{0}不能为空\")]", Description));
+            result.Add(string.Format("[Required(ErrorMessage = \"请填写{0}\")]", Description));
         }
 
         /// <summary>
